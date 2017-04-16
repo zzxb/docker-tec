@@ -1,0 +1,27 @@
+安装步骤：
+
+1.执行dockerfile文件
+
+docker build . -t "myssh"
+
+生成镜像文件：myssh镜像
+
+2.启动myssh镜像容器
+
+docker run -d -e "container=docker" --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup --name centos7 -p 10022:22 myssh /usr/sbin/init
+
+默认用户名root,密码：redhat
+
+3.连接ssh到容器内，安装docker
+
+curl -sSL https://get.daocloud.io/docker | sh
+
+4.启动容器内的docker
+
+systemctl start docker
+
+------------------------------
+
+若要开机时引导 docker 服务
+
+systemctl enable docker
